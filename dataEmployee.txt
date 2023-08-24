@@ -1,4 +1,4 @@
 Company name		: PT Koneksi Niaga Solusindo
-Employee Name		: Pangestu Kurniawan new
+Employee Name		: Batista Ismoyo
 Organization name	: Quality Assurance
 Approval line		: Antonius Agape
