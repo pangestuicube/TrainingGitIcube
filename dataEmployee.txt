@@ -1,6 +1,6 @@
 Company name		: PT Koneksi Niaga Solusindo
 Employee Name		: 黄长陈
-Organization name	: Quality Assurance
+Organization name	: Quality Assurance Manager
 Approval line		: Antonius Agape
 Join Date           : 1 Oct 2020
 
