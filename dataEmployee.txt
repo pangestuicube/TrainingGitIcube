@@ -2,3 +2,4 @@ Company name		: PT Koneksi Niaga Solusindo
 Employee Name		: Carlo W.
 Organization name	: Quality Assurance
 Approval line		: Antonius Agape
+Join Date           : 1 Oct 2020
