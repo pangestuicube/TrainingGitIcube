@@ -3,7 +3,7 @@ Library     SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        Chrome
-${URL}            https://swiftoms-pwa.testingnow.me/
+${URL}            https://pwa.getswift.asia/
 #tambahkan keyword lain jika diperlukan
 
 *** Keywords ***
