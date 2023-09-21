@@ -1,11 +1,13 @@
 Tugas
 1. buatlah script automasi menggunakan robot framework untuk dapat melakukan testing login dan register
-2. push code yang telah di kerjakan dengan format nama brance participant_latihan_robot(pangestu_latihan_robot) dengan base brach dari training_robot
+2. push code yang telah di kerjakan dengan format nama brance participant_latihan_robot(cth : pangestu_latihan_robot) dengan base brach dari training_robot
+*pastikan sudah download web driver dan di simpan di variable ${WebDriverPath} 
 
 Testcase 
 1. Register Valid 
     Step
         -Masuk ke halaman Register
+        -centang kolom Phone number is registered in whatsapp
         -Input semua field pada form register
         -Klik tombol Create an Account
     Expected Result
@@ -13,6 +15,7 @@ Testcase
 2. Register With Email Field Is Empty
     Step
         -Masuk ke halaman Register
+        -centang kolom Phone number is registered in whatsapp
         -Input data field pada form register kecuali field email
         -Klik tombol Create an Account
     Expected Result
