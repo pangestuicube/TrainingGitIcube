@@ -1,0 +1,7 @@
+InputFirstname                  = "//input[@id='register-firstname-textfield']"
+InputLastname                   = "//input[@id='register-lastname-textfield']"
+InputEmail                      = "//input[@id='register-email-textfield']"
+InputPassword                   = "//input[@id='register-password-passfield']"
+InputPasswordConfirmation       = "//input[@id='register-passwordConfirm-textfield']"
+InputPhoneNumber                = "//input[@value='+62']"
+RegisterWACheckbox              = "//input[@id='register-waRegitered-checkbox']"
