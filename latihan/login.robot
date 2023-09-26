@@ -2,18 +2,19 @@
 Library     SeleniumLibrary
 
 *** Variables ***
-${Url}            https://pwa.getswift.asia/
-${WebDriverPath}  C:/WebDrivers/chromedriver.exe
-${EmailAddress}   demo@icube.us
-${Password}       Password123
-${InputEmail}     //input[@id='login-email-textfield']
-${InputPassword}  //input[@id='login-password-passfield']
+${Url}              https://pwa.getswift.asia/
+${WebDriverPath}    C:/WebDrivers/chromedriver.exe
+${EmailAddress}     demo@icube.us
+${Password}         Password123
+${InvalidPassword}  Password123#
+${InputEmail}       //input[@id='login-email-textfield']
+${InputPassword}    //input[@id='login-password-passfield']
 #tambahkan variable lain jika diperlukan
 
 *** Keywords ***
 Start Test
     ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    Create WebDriver    Chrome      chrome_options=${options}  executable_path=${WebDriverPath}  
+    Create WebDriver    Chrome      chrome_options=${options}  executable_path=/Users/atmakaragil/Documents/Automation/pwa-swift-automation-test/chromedriver-mac-arm64/chromedriver  
     Go to                               ${Url}
     Maximize Browser Window
     Set selenium speed                  0.2
@@ -36,5 +37,13 @@ Login with Valid Credential
 
 Login with Invalid Credential
     Start Test
-    #tambahkan code mu disini
+    Start Test
+    Sleep                                                                              5
+    Click element                       //a[@id='header-menu-btnsign']
+    Sleep                               10
+    Press Keys                          None                                           ESC
+    Input Login Form                    ${EmailAddress}                                ${InvalidPassword}      
+    Click Element                       //button[@id='login-signin-button']
+    Wait Until Element Is Visible       //div[@role='alert']
+    Element Should Be Visible           //div[@role='alert']
     Close Browser
