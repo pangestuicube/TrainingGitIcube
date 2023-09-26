@@ -34,3 +34,16 @@ Testcase
         -Klik tombol Sign in
     Expected Result
         -gagal melakukan login dan mendapatkan pesan error
+
+
+${InputEmail}    //input[@id='login-email-textfield']
+${InputPassword}    //input[@id='login-password-passfield']
+${EmailAddress}    jellytest@yopmail.com
+${FailedEmail}    jellytestyopmail.com
+${Password}    Jellyfansclub#2023
+${passwordConfirm}    Jellyfansclub#2023
+${FailedPassword}    Passwordfail
+${Name}    Jelly
+${Lastname}    Oke
+${NoHP}    83112512212
+${NoHPsatu}    83162206391

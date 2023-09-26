@@ -1,40 +1,33 @@
 *** Settings ***
 Library     SeleniumLibrary
+Library     Collections
+Resource         ../latihan/data/base.robot
+Variables        ../latihan/data/testdata.py
+Variables        ../latihan/locator.py
 
-*** Variables ***
-${Url}            https://pwa.getswift.asia/
-${WebDriverPath}  C:/WebDrivers/chromedriver.exe
-${EmailAddress}   demo@icube.us
-${Password}       Password123
-${InputEmail}     //input[@id='login-email-textfield']
-${InputPassword}  //input[@id='login-password-passfield']
-#tambahkan variable lain jika diperlukan
-
-*** Keywords ***
-Start Test
-    ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    Create WebDriver    Chrome      chrome_options=${options}  executable_path=${WebDriverPath}  
-    Go to                               ${Url}
-    Maximize Browser Window
-    Set selenium speed                  0.2
-    
-Input Login Form
-    [Arguments]                        ${Email}              ${Password}
-    Input text                         ${InputEmail}         ${Email}
-    Input text                         ${InputPassword}      ${Password}
 *** Test Cases ***
 Login with Valid Credential
     Start Test
     Sleep                                                                              5
-    Click element                       //a[@id='header-menu-btnsign']
+    Click Element                    ${TombolLogin} 
     Press Keys                          None                                           ESC
-    Input Login Form                    ${EmailAddress}                                ${Password}      
-    Click Element                       //button[@id='login-signin-button']
-    Wait Until Element Is Visible       //h2[normalize-space()='Account information']
-    Element Should Be Visible           //h2[normalize-space()='Account information']
+    Input text                       ${LoginEmail}                ${EmailAddress}
+    Input text                       ${LoginPassword}             ${Password}
+    Click element                    ${LoginButton}
+    Wait Until Element Is Visible    ${MyAccount}
+    Element Should Be Visible        ${MyAccount}
     Close Browser
 
-Login with Invalid Credential
+
+Login with invalid Credential
     Start Test
-    #tambahkan code mu disini
+    Sleep    5
+    Click Element                    ${TombolLogin}  
+    Press Keys                          None                                           ESC
+    Input text                       ${LoginEmail}                ${EmailAddress}
+    Input text                       ${LoginPassword}             ${FailedPassword}
+    Click element                    ${LoginButton}
+    Wait Until Element Is Visible    ${FailedLoginAlert}
+    Element Should Be Visible        ${FailedLoginAlert}
+    Sleep                                                                              5
     Close Browser

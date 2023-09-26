@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.1 on win32)" generated="20230926 22:43:46.749" rpa="false" schemaversion="2">
+<suite id="s1" name="Login" source="C:\Working\Show n tell Q3 2023\TrainingGitIcube\latihan\login.robot">
+<test id="s1-t1" name="Login with Valid Credential">
+<kw name="Start Test" library="base">
+<kw name="Evaluate" library="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230926 22:43:46.945" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002C4F66FCF70&gt;</msg>
+<status status="PASS" starttime="20230926 22:43:46.945" endtime="20230926 22:43:46.945"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${options}</arg>
+<arg>executable_path=${WebDriverPath}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20230926 22:43:46.945" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20230926 22:43:46.945" endtime="20230926 22:43:48.190"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230926 22:43:48.190" level="INFO">Opening url 'https://pwa.getswift.asia/'</msg>
+<status status="PASS" starttime="20230926 22:43:48.190" endtime="20230926 22:43:49.252"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230926 22:43:49.252" endtime="20230926 22:43:49.365"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.2</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20230926 22:43:49.365" endtime="20230926 22:43:49.365"/>
+</kw>
+<status status="PASS" starttime="20230926 22:43:46.945" endtime="20230926 22:43:49.365"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230926 22:43:54.374" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230926 22:43:49.365" endtime="20230926 22:43:54.374"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${TombolLogin}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230926 22:43:54.374" level="INFO">Clicking element '//a[@id='header-menu-btnsign']'.</msg>
+<msg timestamp="20230926 22:43:54.382" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.92)
+Stacktrace:
+	GetHandleVerifier [0x00007FF77ADA52A2+57122]
+	(No symbol) [0x00007FF77AD1EA92]
+	(No symbol) [0x00007FF77ABEE3AB]
+	(No symbol) [0x00007FF77ABCE1B9]
+	(No symbol) [0x00007FF77AC4B417]
+	(No symbol) [0x00007FF77AC5E24F]
+	(No symbol) [0x00007FF77AC46DB3]
+	(No symbol) [0x00007FF77AC1D2B1]
+	(No symbol) [0x00007FF77AC1E494]
+	GetHandleVerifier [0x00007FF77B04EF82+2849794]
+	GetHandleVerifier [0x00007FF77B0A1D24+3189156]
+	GetHandleVerifier [0x00007FF77B09ACAF+3160367]
+	GetHandleVerifier [0x00007FF77AE36D06+653702]
+	(No symbol) [0x00007FF77AD2A208]
+	(No symbol) [0x00007FF77AD262C4]
+	(No symbol) [0x00007FF77AD263F6]
+	(No symbol) [0x00007FF77AD167A3]
+	BaseThreadInitThunk [0x00007FF9AAC6257D+29]
+	RtlUserThreadStart [0x00007FF9AC18AA68+40]
+</msg>
+<msg timestamp="20230926 22:43:54.478" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.92)
+Stacktrace:
+	GetHandleVerifier [0x00007FF77ADA52A2+57122]
+	(No symbol) [0x00007FF77AD1EA92]
+	(No symbol) [0x00007FF77ABEE3AB]
+	(No symbol) [0x00007FF77ABCE1B9]
+	(No symbol) [0x00007FF77AC4B417]
+	(No symbol) [0x00007FF77AC5E24F]
+	(No symbol) [0x00007FF77AC46DB3]
+	(No symbol) [0x00007FF77AC1D2B1]
+	(No symbol) [0x00007FF77AC1E494]
+	GetHandleVerifier [0x00007FF77B04EF82+2849794]
+	GetHandleVerifier [0x00007FF77B0A1D24+3189156]
+	GetHandleVerifier [0x00007FF77B09ACAF+3160367]
+	GetHandleVerifier [0x00007FF77AE36D06+653702]
+	(No symbol) [0x00007FF77AD2A208]
+	(No symbol) [0x00007FF77AD262C4]
+	(No symbol) [0x00007FF77AD263F6]
+	(No symbol) [0x00007FF77AD167A3]
+	BaseThreadInitThunk [0x00007FF9AAC6257D+29]
+	RtlUserThreadStart [0x00007FF9AC18AA68+40]
+</msg>
+<status status="FAIL" starttime="20230926 22:43:54.374" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>None</arg>
+<arg>ESC</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LoginEmail}</arg>
+<arg>${EmailAddress}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LoginPassword}</arg>
+<arg>${Password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LoginButton}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${MyAccount}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${MyAccount}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20230926 22:43:54.478" endtime="20230926 22:43:54.478"/>
+</kw>
+<status status="FAIL" starttime="20230926 22:43:46.945" endtime="20230926 22:43:54.478">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.92)
+Stacktrace:
+	GetHandleVerifier [0x00007FF77ADA52A2+57122]
+	(No symbol) [0x00007FF77AD1EA92]
+	(No symbol) [0x00007FF77ABEE3AB]
+	(No symbol) [0x00007FF77ABCE1B9]
+	(No symbol) [0x00007FF77AC4B417]
+	(No symbol) [0x00007FF77AC5E24F]
+	(No symbol) [0x00007FF77AC46DB3]
+	(No symbol) [0x00007FF77AC1D2B1]
+	(No symbol) [0x00007FF77AC1E494]
+	GetHandleVerifier [0x00007FF77B04EF82+2849794]
+	GetHandleVerifier [0x00007FF77B0A1D24+3189156]
+	GetHandleVerifier [0x00007FF77B09ACAF+3160367]
+	GetHandleVerifier [0x00007FF77AE36D06+653702]
+	(No symbol) [0x00007FF77AD2A208]
+	(No symbol) [0x00007FF77AD262C4]
+	(No symbol) [0x00007FF77AD263F6]
+	(No symbol) [0x00007FF77AD167A3]
+	BaseThreadInitThunk [0x00007FF9AAC6257D+29]
+	RtlUserThreadStart [0x00007FF9AC18AA68+40]
+</status>
+</test>
+<status status="FAIL" starttime="20230926 22:43:46.749" endtime="20230926 22:43:54.478"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230926 22:43:46.945" level="ERROR">Error in file 'C:\Working\Show n tell Q3 2023\TrainingGitIcube\latihan\data\base.robot' on line 4: Variable file '..\latihan\data\testdata.py' does not exist.</msg>
+<msg timestamp="20230926 22:43:46.945" level="ERROR">Error in file 'C:\Working\Show n tell Q3 2023\TrainingGitIcube\latihan\data\base.robot' on line 5: Variable file '..\latihan\locator.py' does not exist.</msg>
+<msg timestamp="20230926 22:43:54.382" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.92)
+Stacktrace:
+	GetHandleVerifier [0x00007FF77ADA52A2+57122]
+	(No symbol) [0x00007FF77AD1EA92]
+	(No symbol) [0x00007FF77ABEE3AB]
+	(No symbol) [0x00007FF77ABCE1B9]
+	(No symbol) [0x00007FF77AC4B417]
+	(No symbol) [0x00007FF77AC5E24F]
+	(No symbol) [0x00007FF77AC46DB3]
+	(No symbol) [0x00007FF77AC1D2B1]
+	(No symbol) [0x00007FF77AC1E494]
+	GetHandleVerifier [0x00007FF77B04EF82+2849794]
+	GetHandleVerifier [0x00007FF77B0A1D24+3189156]
+	GetHandleVerifier [0x00007FF77B09ACAF+3160367]
+	GetHandleVerifier [0x00007FF77AE36D06+653702]
+	(No symbol) [0x00007FF77AD2A208]
+	(No symbol) [0x00007FF77AD262C4]
+	(No symbol) [0x00007FF77AD263F6]
+	(No symbol) [0x00007FF77AD167A3]
+	BaseThreadInitThunk [0x00007FF9AAC6257D+29]
+	RtlUserThreadStart [0x00007FF9AC18AA68+40]
+</msg>
+</errors>
+</robot>
