@@ -1,29 +1,33 @@
 *** Settings ***
 Library     SeleniumLibrary
-
-*** Variables ***
-${URL}            https://pwa.getswift.asia/
-${WebDriverPath}  C:/WebDrivers/chromedriver.exe
-#tambahkan keyword lain jika diperlukan
-
-*** Keywords ***
-Start Test
-    ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    Create WebDriver    Chrome      chrome_options=${options}  executable_path=${WebDriverPath}
-    Go to                               ${URL}
-    Maximize Browser Window
-    Set selenium speed                  0.2
-
-Input Register Form
-    # lengkapi code berikut
+Resource    ../base/base.robot
+Resource    ../pages/register_page.robot
+Variables   ../resources/locators/base_locator.py
+Variables   ../resources/locators/my_account_locator.py
 
 *** Test Cases ***
 Register Valid 
+    [Tags]    Register
     Start Test
-    # lengkapi code berikut
-    Close Browser
-
+    Wait Until Element Is Visible       ${LinkToRegister}
+    Click Element                       ${LinkToRegister}
+    Wait Until Element Is Visible       ${NewslattetPopup}
+    Press Keys                          None            ESC
+    Input Register Form                 ${Firstname}    ${Lastname}    ${EmailAddress}    ${Password}    ${Password}    ${PhoneNumber}
+    Send OTP and Verify
+    Click Element                       ${ButtonRegister}
+    Wait Until Element Is Visible       ${AccountInformationTitle}
+    Element Should Be Visible           ${AccountInformationTitle}
 Register With Email Field Is Empty
+    [Tags]    Register
     Start Test
-    # lengkapi code berikut
+    Wait Until Element Is Visible       ${LinkToRegister}
+    Click Element                       ${LinkToRegister}
+    Wait Until Element Is Visible       ${NewslattetPopup}
+    Press Keys                          None            ESC
+    Input Register Form                 ${Firstname}    ${Lastname}    ${EmtyData}    ${Password}    ${Password}    ${PhoneNumber}
+    Send OTP and Verify
+    Click Element                       ${ButtonRegister}
+    Wait Until Element Is Visible       ${ErrorLabelEmailIsRequired}
+    Element Should Be Visible           ${ErrorLabelEmailIsRequired} 
     Close Browser

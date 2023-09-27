@@ -1,40 +1,33 @@
 *** Settings ***
 Library     SeleniumLibrary
+Resource    ../base/base.robot
+Resource    ../pages/login_page.robot
+Variables    ../resources/locators/base_locator.py
+Variables    ../resources/locators/my_account_locator.py
 
-*** Variables ***
-${Url}            https://pwa.getswift.asia/
-${WebDriverPath}  C:/WebDrivers/chromedriver.exe
-${EmailAddress}   demo@icube.us
-${Password}       Password123
-${InputEmail}     //input[@id='login-email-textfield']
-${InputPassword}  //input[@id='login-password-passfield']
-#tambahkan variable lain jika diperlukan
-
-*** Keywords ***
-Start Test
-    ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    Create WebDriver    Chrome      chrome_options=${options}  executable_path=${WebDriverPath}  
-    Go to                               ${Url}
-    Maximize Browser Window
-    Set selenium speed                  0.2
-    
-Input Login Form
-    [Arguments]                        ${Email}              ${Password}
-    Input text                         ${InputEmail}         ${Email}
-    Input text                         ${InputPassword}      ${Password}
 *** Test Cases ***
 Login with Valid Credential
+    [Tags]    Login
     Start Test
-    Sleep                                                                              5
-    Click element                       //a[@id='header-menu-btnsign']
+    Wait Until Element Is Visible       ${LinkToSignIn}
+    Click element                       ${LinkToSignIn}
+    Wait Until Element Is Visible       ${NewslattetPopup}
     Press Keys                          None                                           ESC
     Input Login Form                    ${EmailAddress}                                ${Password}      
-    Click Element                       //button[@id='login-signin-button']
-    Wait Until Element Is Visible       //h2[normalize-space()='Account information']
-    Element Should Be Visible           //h2[normalize-space()='Account information']
+    Click Element                       ${ButtonLogin}
+    Wait Until Element Is Visible       ${AccountInformationTitle}
+    Element Should Be Visible           ${AccountInformationTitle}
     Close Browser
 
 Login with Invalid Credential
+    [Tags]    Login
     Start Test
-    #tambahkan code mu disini
+    Wait Until Element Is Visible       ${LinkToSignIn}
+    Click element                       ${LinkToSignIn}
+    Wait Until Element Is Visible       ${NewslattetPopup}
+    Press Keys                          None                                           ESC
+    Input Login Form                    ${EmailAddress}                                ${WrongPassword}      
+    Click Element                       ${ButtonLogin}
+    Wait Until Element Is Visible       ${ErrorPopup}
+    Element Should Be Visible           ${ErrorPopup}
     Close Browser
