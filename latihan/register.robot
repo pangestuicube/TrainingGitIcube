@@ -1,54 +1,31 @@
 *** Settings ***
 Library     SeleniumLibrary
 Resource    ../base/base.robot
+Resource    ../pages/register.robot
 Variables   ../resources/data/testdata.py
 Variables   ../resources/locators/register_locator.py
-
-*** Keywords ***
-Input Register Form
-    Input text                         ${InputFirstname}                        ${Firstname}
-    Input text                         ${InputLastname}                         ${Lastname}
-    Input text                         ${InputEmail}                            ${EmailAddressRegister}
-    Input text                         ${InputPassword}                         ${PasswordRegister}
-    Input text                         ${InputPasswordConfirmation}             ${ConfirmPasswordRegister}
-    Input text                         ${InputPhoneNumber}                      ${PhoneNumber}
-    Select Checkbox                    ${RegisterWACheckbox}
-
-Input Register Exclude Email
-    Input text                         ${InputFirstname}                        ${Firstname}
-    Input text                         ${InputLastname}                         ${Lastname}
-    Input text                         ${InputPassword}                         ${PasswordRegister}
-    Input text                         ${InputPasswordConfirmation}             ${ConfirmPasswordRegister}
-    Input text                         ${InputPhoneNumber}                      ${PhoneNumber}
-    Select Checkbox                    ${RegisterWACheckbox}
-
-Send and Verify OTP
-    Click element                       //button[@id='plugin-sendotp-btn']
-    Sleep                               30
-    Click element                       //button[@id='plugin-verifyotp-btn']
-    
     
 *** Test Cases ***
 Register Valid 
     Start Test
-    Sleep                                                                              5
-    Click element                       //a[@id='header-menu-btnregister']
+    Wait Until Element Is Visible       ${LinkToRegister}
+    Click element                       ${LinkToRegister}
     Press Keys                          None                                           ESC
-    Input Register Form
+    Input Register Form                  ${Firstname}        ${Lastname}        ${EmailAddressRegister}        ${PasswordRegister}        ${ConfirmPasswordRegister}        ${PhoneNumber} 
     Send and Verify OTP
-    Click element                       //button[@id='register-btnRegister']
-    Wait Until Element Is Visible       //h2[normalize-space()='Account information']
-    Element Should Be Visible           //h2[normalize-space()='Account information']
+    Click element                       ${ButtonRegister}
+    Wait Until Element Is Visible       ${MyAccountPage}
+    Element Should Be Visible           ${MyAccountPage}
     Close Browser
 
 Register With Email Field Is Empty
     Start Test
-    Sleep                                                                              5
-    Click element                       //a[@id='header-menu-btnregister']
+    Wait Until Element Is Visible       ${LinkToRegister}
+    Click element                       ${LinkToRegister}
     Press Keys                          None                                           ESC
-    Input Register Exclude Email
+    Input Register Form                  ${Firstname}        ${Lastname}        ${EmptyData}        ${PasswordRegister}        ${ConfirmPasswordRegister}        ${PhoneNumber}
     Send and Verify OTP
-    Click element                       //button[@id='register-btnRegister']
-    Wait Until Element Is Visible       //p[normalize-space()='Email is required']
-    Element Should Be Visible           //p[normalize-space()='Email is required']
+    Click element                       ${ButtonRegister}
+    Wait Until Element Is Visible       ${LabelEmailRequired}
+    Element Should Be Visible           ${LabelEmailRequired}
     Close Browser
